@@ -7,7 +7,7 @@ export const Recruiters = () => {
   return (
     <section className='p-y p-x flex justify-center items-center h-screen'>
       <div className='w-full flex flex-col gap-24'>
-        <h2 className='text-heading'>Our Top Recruiters</h2>
+        <h2 className='text-heading text-center'>Our Top Recruiters</h2>
 
         <div className='flex flex-wrap gap-12 justify-center'>
           {images.map((element) => <>

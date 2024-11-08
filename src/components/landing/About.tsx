@@ -12,7 +12,7 @@ import Link from 'next/link';
 
 export const About = () => {
     return (
-        <section className='p-x p-y'>
+        <section className='p-x pt-24'>
             <div className='flex flex-col items-center'>
                 <h2 className='text-heading'>
                     About
