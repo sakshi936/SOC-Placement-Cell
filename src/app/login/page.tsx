@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useFormik } from "formik";
 import { toast } from "sonner";
 import * as Yup from "yup";
+import Link from "next/link";
 
 export default function Login() {
 	const LoginSchema = Yup.object().shape({
@@ -31,7 +32,12 @@ export default function Login() {
 	});
 
 	return (
-		<section className="w-full h-screen flex justify-center items-center bg-blue-700">
+		<section className="w-full h-screen flex justify-center items-center bg-blue-700 relative">
+			<Link href="/">
+				<div className="absolute left-4 top-4 text-white border-2 border-white px-7 py-2 rounded-3xl font-semibold text-xl">
+					Home
+				</div>
+			</Link>
 			<div className="w-full flex  justify-center items-center  ">
 				<form onSubmit={formik.handleSubmit} className=" w-1/3 p-10 bg-white/90  rounded-2xl flex flex-col justify-center items-center gap-y-6 ">
 					<h1 className="text-2xl font-semibold mb-4">Student Login</h1>
