@@ -11,11 +11,21 @@ export default function Home() {
 	return (
 		<main>
 			<Navbar />
-			<About />
-			<Records />
-			<Recruiters />
-			<Allumani />
-			<Footer />
+			<div id="about">
+				<About />
+			</div>
+			<div id="records">
+				<Records />
+			</div>
+			<div id="recruiters">
+				<Recruiters />
+			</div>
+			<div id="alumni">
+				<Allumani />
+			</div>
+			<div>
+				<Footer />
+			</div>
 		</main>
 	);
 }

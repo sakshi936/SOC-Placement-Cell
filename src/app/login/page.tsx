@@ -7,8 +7,10 @@ import { useFormik } from "formik";
 import { toast } from "sonner";
 import * as Yup from "yup";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+	const router = useRouter();
 	const LoginSchema = Yup.object().shape({
 		email: Yup.string()
 			.email("Invalid email")
@@ -28,6 +30,7 @@ export default function Login() {
 		validationSchema: LoginSchema,
 		onSubmit: (values) => {
 			toast(`Successfully LoggedIn with Email: ${values.email}`);
+			router.push('/profile');
 		},
 	});
 
