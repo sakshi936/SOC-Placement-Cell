@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useEffect } from 'react';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -32,7 +32,9 @@ const formSchema = z.object({
 
 export default function Page() {
   const [userExists, setUserExists] = useState<boolean>(true);
-
+  useEffect(() => {
+    setUserExists(true)
+  }, []);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
