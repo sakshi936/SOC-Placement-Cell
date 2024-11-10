@@ -14,16 +14,16 @@ export const Navbar = () => {
                     <Link href="/">
                         <li>Home</li>
                     </Link>
-                    <Link href="/about">
+                    <Link href="/#about">
                         <li>About</li>
                     </Link>
-                    <Link href="/records">
+                    <Link href="/#records">
                         <li>Recourds</li>
                     </Link>
-                    <Link href="/recruiters">
+                    <Link href="/#recruiters">
                         <li>Recruiters</li>
                     </Link>
-                    <Link href="alumni">
+                    <Link href="/#alumni">
                         <li>Allumani</li>
                     </Link>
                 </ul>
