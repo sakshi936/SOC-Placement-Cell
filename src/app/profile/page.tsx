@@ -174,7 +174,7 @@ export default function Page() {
           />
           <FormField
             control={form.control}
-            name="fieldOfExpertiese"
+            name="lang"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>In Which Programming Language are you most fluent :</FormLabel>
