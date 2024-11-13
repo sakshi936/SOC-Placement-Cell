@@ -32,7 +32,7 @@ export default function Login() {
 		onSubmit: async (values) => {
 			const { email, password } = values;
 			const respoense = await reqLogin({ email, password });
-			// console.log(`getting the res ${respoense}`);
+			sessionStorage.setItem("login", "true");
 
 			toast(` ${respoense}`);
 			router.push('/profile');
