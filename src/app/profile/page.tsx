@@ -15,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useState } from 'react';
 import { Dashboard } from '@/components/Dashboard';
+import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
   interested: z.enum(["Yes", "No"]),
@@ -37,7 +38,11 @@ const formSchema = z.object({
 
 export default function Page() {
   const [userExists, setUserExists] = useState<boolean>(false);
+  const router = useRouter();
   useEffect(() => {
+    if(!sessionStorage.getItem("login")){
+      router.push('/login');
+    }
     setUserExists(false)
   }, []);
   const form = useForm<z.infer<typeof formSchema>>({
