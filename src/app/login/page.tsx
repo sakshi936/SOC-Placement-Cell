@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import { toast } from "sonner";
 import * as Yup from "yup";
 import Link from "next/link";
+import { reqLogin } from "@/axiosApiRequest";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
@@ -28,18 +29,21 @@ export default function Login() {
 			password: "",
 		},
 		validationSchema: LoginSchema,
-		onSubmit: (values) => {
-			toast(`Successfully LoggedIn with Email: ${values.email}`);
-			router.push('/profile');
+		onSubmit: async (values) => {
+			const { email, password } = values;
+			const respoense = await reqLogin({ email, password });
+			toast(` ${respoense}`);
+			if(respoense === "Login successful"){
+				sessionStorage.setItem("login", "true");
+				router.push('/profile');
+			}
 		},
 	});
 
 	return (
 		<section className="w-full h-screen flex justify-center items-center bg-blue-700 relative">
 			<Link href="/">
-				<div className="absolute left-4 top-4 text-white border-2 border-white px-7 py-2 rounded-3xl font-semibold text-xl">
-					Home
-				</div>
+				<div className="absolute left-4 top-4 text-white border-2 border-white px-7 py-2 rounded-3xl font-semibold text-xl">Home</div>
 			</Link>
 			<div className="w-full flex  justify-center items-center  ">
 				<form onSubmit={formik.handleSubmit} className=" w-1/3 p-10 bg-white/90  rounded-2xl flex flex-col justify-center items-center gap-y-6 ">
