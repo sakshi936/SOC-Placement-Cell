@@ -17,7 +17,12 @@ import { useState } from 'react';
 import { Dashboard } from '@/components/Dashboard';
 
 const formSchema = z.object({
+  interested: z.enum(["Yes", "No"]),
   fullName: z.string().min(2).max(50),
+  enrollment: z.string().min(12).max(12),
+  university: z.string(),
+  course: z.enum(["MCA", "IMCA"]),
+  yoa: z.string(),
   email: z.string(),
   mobileNo: z.string().min(10).max(10),
   gender: z.enum(["Male", "Female", "Mentally Ill"]),
@@ -31,14 +36,19 @@ const formSchema = z.object({
 })
 
 export default function Page() {
-  const [userExists, setUserExists] = useState<boolean>(true);
+  const [userExists, setUserExists] = useState<boolean>(false);
   useEffect(() => {
-    setUserExists(true)
+    setUserExists(false)
   }, []);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      interested: "Yes",
       fullName: "",
+      enrollment: "",
+      university: "",
+      course: "MCA",
+      yoa: "",
       email: "",
       mobileNo: "",
       gender: "Male",
@@ -57,7 +67,7 @@ export default function Page() {
   if (userExists) {
     return (
       <>
-        <Dashboard/>
+        <Dashboard />
       </>
     )
   }
@@ -68,12 +78,115 @@ export default function Page() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 bg-gray-200 p-7 rounded-lg" >
           <FormField
             control={form.control}
+            name="interested"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Are You Interested For Campus Placement For IPS Academy</FormLabel>
+                <FormControl>
+                  <div className="space-y-2 space-x-4">
+                    <label>
+                      <input
+                        type="radio"
+                        value="Yes"
+                        checked={field.value === "Yes"}
+                        onChange={() => field.onChange("Yes")}
+                      />{" "}
+                      Yes
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        value="No"
+                        checked={field.value === "No"}
+                        onChange={() => field.onChange("No")}
+                      />{" "}
+                      No
+                    </label>
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
             name="fullName"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Full Name</FormLabel>
                 <FormControl>
                   <Input required type='text' placeholder="Full Name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="enrollment"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Enrollment No.</FormLabel>
+                <FormControl>
+                  <Input required type='text' placeholder="Enrollment No." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="university"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>University Name</FormLabel>
+                <FormControl>
+                  <Input required type='text' placeholder="University Name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="course"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Course</FormLabel>
+                <FormControl>
+                  <div className="space-y-2 space-x-4">
+                    <label>
+                      <input
+                        type="radio"
+                        value="MCA"
+                        checked={field.value === "MCA"}
+                        onChange={() => field.onChange("MCA")}
+                      />{" "}
+                      MCA
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        value="IMCA"
+                        checked={field.value === "IMCA"}
+                        onChange={() => field.onChange("IMCA")}
+                      />{" "}
+                      IMCA
+                    </label>
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="yoa"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Year of Admission</FormLabel>
+                <FormControl>
+                  <Input required type='text' placeholder="Year of Admission" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
