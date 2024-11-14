@@ -9,18 +9,18 @@ import { Footer } from "@/components/Footer";
 
 export default function Home() {
 	return (
-		<main>
-			<Navbar />
+		<main className=" flex flex-col gap-y-20">
+			{/* <Navbar /> */}
 			<div id="about">
 				<About />
 			</div>
-			<div id="records">
+			<div id="records" className=" ">
 				<Records />
 			</div>
-			<div id="recruiters">
+			<div id="recruiters" className=" ">
 				<Recruiters />
 			</div>
-			<div id="alumni">
+			<div id="alumni" className="  px-10">
 				<Allumani />
 			</div>
 			<div>
