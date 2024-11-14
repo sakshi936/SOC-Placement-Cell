@@ -32,10 +32,13 @@ export default function Login() {
 		onSubmit: async (values) => {
 			const { email, password } = values;
 			const respoense = await reqLogin({ email, password });
-			toast(` ${respoense}`);
-			if(respoense === "Login successful"){
+			toast(` ${respoense.data.message}`);
+
+			// route use to /profile only when user is logged in and 200 status code recieved
+			if (respoense.status === 200) {
+				// console.log("changing route /profile");
+				router.push("/profile");
 				sessionStorage.setItem("login", "true");
-				router.push('/profile');
 			}
 		},
 	});
