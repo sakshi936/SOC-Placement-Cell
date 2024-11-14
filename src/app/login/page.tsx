@@ -34,8 +34,8 @@ export default function Login() {
 			const respoense = await reqLogin({ email, password });
 			// console.log(`getting the res ${respoense}`);
 
-			toast(` ${respoense}`);
-			router.push('/profile');
+			toast(` ${respoense.data.message}`);
+			if (respoense.status === 200) router.push("/profile");
 		},
 	});
 
