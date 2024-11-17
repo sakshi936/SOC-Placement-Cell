@@ -18,16 +18,37 @@ export const createProfile = async (details: StudentDetails) => {
 		const response = await axios.post("/api/student/", details);
 		return response.data.message;
 	} catch (error) {
-		return (error as Error).message;
+		return `Failed to request students profile creation with : ${(error as Error).message}`;
 	}
 };
 
 //  show student profile   // id: reqLogin response.data.student._id
 export const getStudentProfile = async (id: string) => {
 	try {
-		const response = await axios.post("/api/student/profile", id);
+		const response = await axios.get(`/api/student/profile/${id}`);
 		return response.data.student;
 	} catch (error) {
-		return (error as Error).message;
+		return `Failed to request student data with : ${(error as Error).message}`;
+	}
+};
+
+// show all the students details
+
+export const getAllStudentsProfiles = async () => {
+	try {
+		const response = await axios.get("/api/student/profiles");
+		return response.data.students;
+	} catch (error) {
+		return `Failed to request students data with : ${(error as Error).message}`;
+	}
+};
+
+// update edited student data
+
+export const updateProfile = async (id: string, editedData: StudentDetails) => {
+	try {
+		const response = await axios.put(`/api/student/update/${id}`, editedData);
+	} catch (error) {
+		return `Failed to request update student profile with : ${(error as Error).message}`;
 	}
 };
