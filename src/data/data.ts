@@ -49,33 +49,78 @@ export const gallery = [
 
 export const aboutContent = {
 	heading: "SOC Placement-Cell",
-	content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta repellat doloremque consequatur libero nulla, praesentium odio impedit voluptates necessitatibus earum hicvoluptatum repudiandae deleniti molestiae perspiciatis consectetur reprehenderit sunt accusamus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla fugit hic amet,estquae corporis consectetur soluta blanditiis mollitia excepturi nobis officiis quidem, modi delectus, provident rerum cumque natus. Cumque! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam nobis consequuntur consequatur quam laboriosam nostrum temporibus qui saepe perspiciatis hic, magni dicta ab officiis repellendus! Natus ut quod rerum saepe! Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque debitis dignissimos soluta fugit sapiente ex fugiat deleniti voluptates facere, iusto quidem mollitia labore asperiores quam corrupti illum perspiciatis quae quisquam? adipisicing elit. Quibusdam nobis consequuntur consequatur quam laboriosam nostrum temporibus qui saepe perspiciatishic, magni dicta ab officiis repellendus! Natus ut quod rerum saepe! Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque debitis dignissimos soluta fugit sapiente ex fugiat deleniti voluptates facere iusto quidem mollitia labore asperiores, quam corrupti illum perspiciatis quae quisquam?",
+	content: "School of Computer Science was established in the year 1995 with a three-year full-time course in Bachelor of Computer Applications course affiliated to DAVV Indore (MP). The college is among the top ten BCA colleges in the state, situated in the educational hub (i.e. Indore) of MP state. In recent years, there has been an increasing demand for BCA graduates from all corners of India. On account of rapid growth in the industry & services sector, the employment opportunities for young graduates who have undertaken computer education are bright. The persons already employed are also aspiring for BCA education to make growth in their career in terms of higher responsibilities and monetary benefits. Current Business schools give apt training & education to students to take challenges of multitasking in a competitive environment. This has created a huge demand for computer studies and technical knowledge is essential to ensure that quality and professional benefits are accrued from the degree courses. The School of Computers is acclaimed as the best MCA college in Indore.",
 };
 
 export const allumniesDetails = [
 	{
-		quote: "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
-		name: "Charles Dickens",
-		title: "A Tale of Two Cities",
+		name: "Zoya Ali",
+		course: "MCA",
+		session: "2021-2023",
+		designation: "Full Stack",
+		company: "Virtual Hides"
 	},
 	{
-		quote: "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
-		name: "William Shakespeare",
-		title: "Hamlet",
+		name: "Tatin Ojha",
+		course: "MCA",
+		session: "2021-2023",
+		designation: "Full Stack",
+		company: "Codiatic Tech"
 	},
 	{
-		quote: "All that we see or seem is but a dream within a dream.",
-		name: "Edgar Allan Poe",
-		title: "A Dream Within a Dream",
+		name: "Pradeep Rahangdale",
+		course: "MCA",
+		session: "2021-2023",
+		designation: "Full Stack",
+		company: "Delris"
 	},
 	{
-		quote: "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
-		name: "Jane Austen",
-		title: "Pride and Prejudice",
+		name: "Bhavishya Choudhary",
+		course: "MCA",
+		session: "2021-2023",
+		designation: "Frontend Developer",
+		company: "Mindtree"
 	},
 	{
-		quote: "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
-		name: "Herman Melville",
-		title: "Moby-Dick",
+		name: "Hariram Yadav",
+		course: "MCA",
+		session: "2020-2022",
+		designation: "Backend Developer",
+		company: "Technomat"
 	},
+	{
+		name: "Khushboo Agrawal",
+		course: "MCA",
+		session: "2017-2019",
+		designation: "Software Developer",
+		company: "TCS"
+	},
+	{
+		name: "Hemlata Gupta",
+		course: "MCA",
+		session: "2012-2015",
+		designation: "Java Developer",
+		company: "TCS"
+	},
+	{
+		name: "Surbhi Joshi",
+		course: "BCA",
+		session: "2016-2019",
+		designation: "Research Analyst",
+		company: "KIA business solution"
+	},
+	{
+		name: "Prince Tiwari",
+		course: "MCA",
+		session: "2012-2015",
+		designation: "Network Engineer",
+		company: "Nokia"
+	},
+	{
+		name: "Anuj",
+		course: "MCA",
+		session: "2007-2010",
+		designation: "Lead Consultant",
+		company: "HCL technologies"
+	}
 ];

@@ -10,7 +10,7 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
 	return (
 		<main className=" flex flex-col gap-y-20">
-			{/* <Navbar /> */}
+			<Navbar />
 			<div id="about">
 				<About />
 			</div>
