@@ -6,7 +6,7 @@ export const reqLogin = async ({ email, password }: loginData) => {
 	try {
 		const response = await axios.post("/api/login", { email, password });
 		// console.log("Response data:", response.data.student._id); // Debugging line
-		return response.data.message; // This will return the whole response as it is .
+		return response.data; // This will return the whole response as it is .
 	} catch (err: any) {
 		return err.message; // Return the error message if the request fails
 	}
