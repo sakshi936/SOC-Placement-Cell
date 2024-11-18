@@ -7,8 +7,8 @@ import { galleryImags, aboutContent } from "@/data/data";
 
 export function About() {
 	return (
-		<div>
-			<ImagesSlider className="h-[40rem] mt-20" images={galleryImags}>
+		<div className="">
+			<ImagesSlider className="h-screen" images={galleryImags}>
 				<motion.div
 					initial={{
 						opacity: 0,

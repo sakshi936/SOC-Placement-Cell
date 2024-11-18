@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 import React from "react";
 import { ImagesSlider } from "@/components/ui/images-slider";
 import { galleryImags, aboutContent } from "@/data/data";
+import { SideBar } from "@/components/SideBar";
 
 function page() {
 	return (
-		<div>
-			<ImagesSlider className="h-[40rem] mt-20" images={galleryImags}>
+		<main>
+			<SideBar />
+			<ImagesSlider className="h-screen" images={galleryImags}>
 				<motion.div
 					initial={{
 						opacity: 0,
@@ -39,7 +41,7 @@ function page() {
 					</div>
 				</motion.div>
 			</ImagesSlider>
-		</div>
+		</main>
 	);
 }
 

@@ -8,7 +8,7 @@ import { allumniesDetails } from "@/data/data";
 
 export function Allumani() {
 	return (
-		<div className=" rounded-md flex flex-col gap-y-8 antialiased  items-center justify-center relative overflow-hidden">
+		<div className="h-screen rounded-md flex flex-col gap-y-8 antialiased  items-center justify-center relative overflow-hidden">
 			<h2 className="text-heading ">Allumani</h2>
 			<div className="py-10">
 				<InfiniteMovingCards items={allumniesDetails} direction="left" speed="slow" />
