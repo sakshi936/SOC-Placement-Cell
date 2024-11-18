@@ -1,7 +1,8 @@
 import React from 'react'
-import { Navbar } from '@/components/Navbar'
+// import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer';
 import { useState, useEffect, ChangeEvent } from 'react';
+import { SideBar } from '@/components/SideBar';
 
 type UserProfile = {
     username: string;
@@ -66,8 +67,8 @@ export const Dashboard = () => {
 
     return (
         <div>
-            <Navbar />
-            <div className='pt-36 p-x'>
+            <SideBar />
+            <div className='h-screen flex justify-center items-center p-x'>
                 <div className="container mx-auto p-4">
                     <h2 className="text-2xl font-semibold mb-4">User Dashboard</h2>
                     <div className="bg-white shadow-md rounded-lg p-4">

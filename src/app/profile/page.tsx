@@ -6,14 +6,14 @@ import { useRouter } from 'next/navigation';
 import { ProfileForm } from '@/components/profile/ProfileForm';
 
 export default function Page() {
-  const [userExists, setUserExists] = useState<boolean>(false);
+  const [userExists, setUserExists] = useState<boolean>(true);
   const router = useRouter();
 
   useEffect(() => {
     if (!sessionStorage.getItem("login")) {
       router.push('/login');
     }
-    setUserExists(false)
+    setUserExists(true)
   }, [router]);
 
   if (userExists) {

@@ -1,10 +1,9 @@
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-
+import { SideBar } from "@/components/SideBar";
 export default function page() {
 	return (
 		<main>
 			{/* <Navbar/> */}
+			<SideBar />
 			<div className=" flex flex-col justify-center items-center p-4 h-screen gap-y-10">
 				<h1 className="text-5xl font-semibold text-center">Alumni</h1>
 				<p className="w-1/2 text-center">

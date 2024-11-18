@@ -18,13 +18,13 @@ export const Navbar = () => {
 						<li>About</li>
 					</Link>
 					<Link href="/#records">
-						<li>Recourds</li>
+						<li>Records</li>
 					</Link>
 					<Link href="/#recruiters">
 						<li>Recruiters</li>
 					</Link>
 					<Link href="/#alumni">
-						<li>Allumani</li>
+						<li>Alumni</li>
 					</Link>
 				</ul>
 			</div>
