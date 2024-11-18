@@ -37,6 +37,12 @@ const formSchema = z.object({
     state: z.string(),
     passportPhoto: z.string(),
 
+    // ====================
+
+    universityName: z.string(),
+    course: z.string(),
+    current_semester: z.string(),
+
     // SSC =====================
 
     SSCpercentage: z.string(),
@@ -141,6 +147,12 @@ export const ProfileForm = () => {
             hometown: "",
             state: "",
             passportPhoto: "",
+
+            // =================
+
+            universityName: "",
+            course: "",
+            current_semester: "",
 
             // SSC =====================
 
@@ -592,6 +604,47 @@ export const ProfileForm = () => {
 
                     <div className='p-7 bg-gray-200 rounded-xl grid grid-cols-2 gap-7'>
                         <h2 className='col-span-2 border-b-2 border-gray-400 text-3xl font-semibold text-gray-400'>Academic Information</h2>
+                        <div className='col-span-2 grid grid-cols-3 gap-7'>
+                            <FormField
+                                control={form.control}
+                                name="universityName"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>University Name</FormLabel>
+                                        <FormControl>
+                                            <Input required type="text" placeholder="University Name" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="course"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Course</FormLabel>
+                                        <FormControl>
+                                            <Input required type="text" placeholder="Course" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="current_semester"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Current Semester</FormLabel>
+                                        <FormControl>
+                                            <Input required type="text" placeholder="Current Semester" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
                         <FormField
                             control={form.control}
                             name="SSCpercentage"

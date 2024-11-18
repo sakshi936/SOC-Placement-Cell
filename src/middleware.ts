@@ -3,24 +3,38 @@ import type { NextRequest } from 'next/server';
 import { getStudentProfile } from './axiosApiRequest';
 
 export async function middleware(request: NextRequest) {
-  // Get the cookies from the request
+  // Create a NextResponse object
+  const res = NextResponse.next();
+
+  // Retrieve the 'student_id' cookie from the request
   const studentId = request.cookies.get('student_id')?.value;
 
+  // If the 'student_id' cookie is not present, redirect to the login page
   if (!studentId) {
-    // If the cookie is not present, redirect to the login page
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
-  const response = await getStudentProfile(studentId);
+  try {
+    // Fetch the student profile using the provided student ID
+    const response = await getStudentProfile(studentId);
 
-  console.log(response);
+    if (response.status === 404) {
+      // Set a cookie indicating the user does not exist
+      res.cookies.set('userExist', 'false');
+      return res;
+    }
 
-
-  // If the cookie is present, proceed with the request
-  return NextResponse.next();
+    // Set a cookie indicating the user exists
+    res.cookies.set('userExist', 'true');
+    return res;
+  } catch (error) {
+    // Log the error and handle it appropriately
+    console.error('Error fetching student profile:', error);
+    return NextResponse.redirect(new URL('/error', request.url)); // Redirect to a generic error page
+  }
 }
 
 // Specify the paths where the middleware should run
 export const config = {
-  matcher: ['/profile/:path*'], // Apply middleware to the '/profile' route
+  matcher: ['/profile/:path*'], // Apply middleware to all subpaths under '/profile'
 };
