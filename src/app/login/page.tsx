@@ -32,9 +32,11 @@ export default function Login() {
 		onSubmit: async (values) => {
 			const { email, password } = values;
 			const respoense = await reqLogin({ email, password });
-			toast(` ${respoense}`);
-			if (respoense === "Login successful") {
+			toast(` ${respoense.message}`);
+			if (respoense.message === "Login successful") {
 				console.log("changing route /profile");
+
+				document.cookie = `student_id=${respoense.student._id}; path=/;`;
 
 				sessionStorage.setItem("login", "true");
 				router.push("/profile");

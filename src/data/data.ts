@@ -212,4 +212,22 @@ export const placedStudentcards = [
 		course: "abc",
 		batch: "2024",
 	},
+	{
+		name: "Sala behta hi jayega",
+		src: "https://images.pexels.com/photos/8199134/pexels-photo-8199134.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+		company: "abc",
+		designation: "abc",
+		package: "abc",
+		course: "abc",
+		batch: "2024",
+	},
+	{
+		name: "Sala behta hi jayega",
+		src: "https://images.pexels.com/photos/8199134/pexels-photo-8199134.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+		company: "abc",
+		designation: "abc",
+		package: "abc",
+		course: "abc",
+		batch: "2024",
+	}
 ];
