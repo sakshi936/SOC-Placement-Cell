@@ -23,9 +23,9 @@ export const createProfile = async (details: StudentDetails) => {
 };
 
 //  show student profile   // id: reqLogin response.data.student._id
-export const getStudentProfile = async (id: string) => {
+export const getStudentProfile = async (userId: string) => {
 	try {
-		const response = await axios.get(`/api/student/profile/${id}`);
+		const response = await axios.post(`/api/student/profile`, { userId });
 		return response.data.student;
 	} catch (error) {
 		return `Failed to request student data with : ${(error as Error).message}`;
@@ -43,7 +43,7 @@ export const getAllStudentsProfiles = async () => {
 	}
 };
 
-// update edited student data
+// update edited student data  id will be student profile._id
 
 export const updateProfile = async (id: string, editedData: StudentDetails) => {
 	try {
