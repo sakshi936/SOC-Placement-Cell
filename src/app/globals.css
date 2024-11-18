@@ -113,3 +113,15 @@ body {
 .bg-blue{
   background-color: #06275F;
 }
+
+/* no spinner [updown arrow of input number] */
+.no-spinner{
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button{
+  margin: 0;
+  -webkit-appearance: none;
+}
