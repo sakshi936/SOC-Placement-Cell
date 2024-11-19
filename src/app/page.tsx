@@ -12,7 +12,7 @@ export default function Home() {
 	return (
 		<main className=" flex flex-col gap-y-20">
 			{/* <Navbar /> */}
-			<SideBar/>
+			<SideBar />
 			<div id="about">
 				<About />
 			</div>
@@ -22,7 +22,7 @@ export default function Home() {
 			<div id="recruiters" className=" ">
 				<Recruiters />
 			</div>
-			<div id="alumni" className="  px-10">
+			<div id="alumni" className="px-4">
 				<Allumani />
 			</div>
 			<div>
