@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export const Recruiters = () => {
 	return (
-		<section className="p-y p-x flex justify-center items-center h-screen">
+		<section className="p-y p-x flex justify-center items-center">
 			<div className="w-full flex flex-col gap-24">
 				<h2 className="text-heading text-center">Our Top Recruiters</h2>
 

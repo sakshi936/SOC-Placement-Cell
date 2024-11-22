@@ -8,3 +8,10 @@ export default async function userExists() {
 
   return userExist || null; // Return `null` if the cookie is not found
 }
+
+export async function isLoggedIn(){
+  const cookieStore = cookies();
+  const isLoggedIn = cookieStore.get('login')?.value;
+
+  return isLoggedIn;
+}

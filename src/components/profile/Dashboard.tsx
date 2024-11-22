@@ -105,11 +105,11 @@ export const Dashboard = () => {
                 <div className="flex justify-center items-center mb-8">
                     {userData?.passportPhoto ? (
                         <Image
-                            src={userData.passportPhoto}
+                            src="/test.jpg"
                             alt="Profile Photo"
                             width={150}
                             height={150}
-                            className="rounded-full"
+                            className="rounded-full aspect-square object-cover"
                         />
                     ) : (
                         <div className="w-36 h-36 bg-gray-300 rounded-full"></div>

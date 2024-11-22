@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -14,14 +14,28 @@ import PersonIcon from '@mui/icons-material/Person';
 import StarIcon from '@mui/icons-material/Star';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import SchoolIcon from '@mui/icons-material/School';
+import { isLoggedIn } from '@/hooks/userExists';
+import getStudentData from '@/hooks/getStudentData';
 
 export const SideBar = () => {
     const [open, setOpen] = useState(false);
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState<string | undefined>();
+    const [userData, setUserData] = useState<UserData>();
 
     const toggleDrawer = (newOpen: boolean) => () => {
         setOpen(newOpen);
     };
 
+    useEffect(() => {
+        isLoggedIn().then((data) => {
+            setIsUserLoggedIn(data);
+        });
+        const data = getStudentData();
+        console.log(data);
+        data.then(data => {
+            setUserData(data);
+        });
+    }, []);
     const DrawerList = (
         <Box
             sx={{
@@ -61,10 +75,30 @@ export const SideBar = () => {
                 </ListItemButton>
             </List>
             <div className='absolute bottom-0 w-full flex justify-center items-center py-7 bg-blue text-white'>
-                <ListItemButton href="/login" sx={{ border: "", display: "flex", justifyContent: "center", gap: "1rem" }}>
-                    <LoginIcon />
-                    <p>Login</p>
-                </ListItemButton>
+                {isUserLoggedIn ?
+                    <ListItemButton href="/profile" sx={{ border: "", display: "flex", justifyContent: "center", gap: "1rem" }}>
+                        <Image
+                            src="/test.jpg"
+                            alt="Profile Photo"
+                            width={40}
+                            height={40}
+                            className="rounded-full aspect-square object-cover"
+                        />
+                        <div className="text-2xl font-semibold">
+                        {
+										userData?.name
+											.toLowerCase()
+											.split(' ')
+											.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+											.join(' ')
+									}
+                        </div>
+                    </ListItemButton>
+                    : <ListItemButton href="/login" sx={{ border: "", display: "flex", justifyContent: "center", gap: "1rem" }}>
+                        <LoginIcon />
+                        <p>Login</p>
+                    </ListItemButton>
+                }
             </div>
         </Box>
     );
@@ -82,4 +116,88 @@ export const SideBar = () => {
             </Drawer>
         </div>
     );
+}
+
+interface UserData {
+    ssc: {
+        percentage: number;
+        schoolName: string;
+        board: string;
+        yearOfPassing: number;
+    };
+    hssc: {
+        percentage: number;
+        schoolName: string;
+        board: string;
+        yearOfPassing: number;
+    };
+    diploma: {
+        percentage: number;
+        admissionYear: number;
+        passOutYear: number;
+        instituteName: string;
+    };
+    undergraduate: {
+        universityName: string;
+        course: string;
+        aggregateCGPA: number;
+        aggregatePercentage: number;
+        specialization: string;
+        yearOfAdmission: number;
+        yearOfPassing: number;
+    };
+    postgraduate: {
+        universityName: string;
+        course: string;
+        yearOfAdmission: number;
+        yearOfPassing: number;
+        aggregateCGPA: number;
+        aggregatePercentage: number;
+    };
+    gaps: {
+        hasGap: string;
+        numberOfYears: number;
+    };
+    backlogs: {
+        hasActiveBacklogs: string;
+        totalActiveBacklogs: number;
+        backlogHistory: string;
+    };
+    father: {
+        name: string;
+        contactNo: string;
+        occupation: string;
+    };
+    mother: {
+        name: string;
+        contactNo: string;
+    };
+    _id: string;
+    userId: string;
+    name: string;
+    enrollmentNumber: string;
+    dob: string;
+    gender: string;
+    category: string;
+    speciallyAbled: string;
+    mobileNo: string;
+    altMobileNo: string;
+    email: string;
+    localAddress: string;
+    localPincode: string;
+    permanentAddress: string;
+    permanentPincode: string;
+    hometown: string;
+    state: string;
+    passportPhoto: string;
+    semesterDetails: {
+        semester: number;
+        sgpa: number;
+        atkt: number;
+        _id: string;
+    }[];
+    internship: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
 }
