@@ -1,6 +1,6 @@
 // import Image from "next/image";
 // import Link from "next/link";
-// import { Navbar } from "@/components/Navbar";
+import { Navbar } from "@/components/Navbar";
 import { About } from "@/components/landing/About";
 import { Records } from "@/components/landing/Records";
 import { Recruiters } from "@/components/landing/Recruiters";
@@ -10,11 +10,13 @@ import { SideBar } from "@/components/SideBar";
 
 export default function Home() {
 	return (
-		<main className=" flex flex-col gap-y-20">
-			{/* <Navbar /> */}
+		<main className=" flex flex-col gap-y-48">
 			<SideBar />
-			<div id="about">
-				<About />
+			<div className="h-screen">
+				<Navbar />
+				<div id="about" className="grow">
+					<About />
+				</div>
 			</div>
 			<div id="records" className=" ">
 				<Records />

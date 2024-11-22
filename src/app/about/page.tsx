@@ -10,7 +10,7 @@ function page() {
 	return (
 		<main>
 			<SideBar />
-			<ImagesSlider className="h-screen" images={galleryImags}>
+			<ImagesSlider className="" images={galleryImags}>
 				<motion.div
 					initial={{
 						opacity: 0,

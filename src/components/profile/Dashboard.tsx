@@ -104,10 +104,8 @@ export const Dashboard = () => {
 			<div className="container mx-auto p-4">
 				<div className="flex justify-center items-center mb-8">
 					{userData?.passportPhoto ? (
-						// <Image src={userData.passportPhoto} alt="Profile Photo" width={150} height={150} className="rounded-full" />
-						<h1>Image</h1>
+						<Image src="/test.jpg" alt="Profile Photo" width={150} height={150} className="rounded-full aspect-square object-cover" />
 					) : (
-						// <h1>Hello</h1>
 						<div className="w-36 h-36 bg-gray-300 rounded-full"></div>
 					)}
 				</div>
