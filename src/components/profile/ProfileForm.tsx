@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -12,6 +12,9 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import studentId from '@/hooks/studentId';
+import { createProfile } from '@/axiosApiRequest';
+// import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
     interested: z.enum(["Yes", "No"]),
@@ -23,9 +26,9 @@ const formSchema = z.object({
     dob: z.string().refine(val => !isNaN(Date.parse(val)), {
         message: "Invalid Date",
     }),
-    gender: z.enum(["Male", "Female", "Mentally Ill"]),
-    mobileNo: z.string().min(10).max(10),
-    altMobileNo: z.string().min(10).max(10),
+    gender: z.enum(["Male", "Female", "Others"]),
+    mobileNo: z.string().min(10).max(14),
+    altMobileNo: z.string().min(10).max(14),
     email: z.string(),
     category: z.enum(["General", "EWS", "OBC", "ST", "SC"]),
     speciallyAbled: z.enum(["Yes", "No"]),
@@ -119,11 +122,17 @@ const formSchema = z.object({
     motherName: z.string(),
     motherContactNo: z.string(),
 
+    // Experience
+    internship: z.string(),
+
 
     affirmation: z.enum(["Yes", "No"])
 })
 
 export const ProfileForm = () => {
+    const [studentUserId, setStudentUserId] = useState<string>();
+    // const router = useRouter();
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -230,13 +239,141 @@ export const ProfileForm = () => {
             motherName: "",
             motherContactNo: "",
 
+            // Experience
+            internship: "",
+
 
             affirmation: "Yes"
         },
     })
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values)
+        studentId()
+            .then(id => setStudentUserId(id))
+            .catch(err => console.error(`error fetching studentid: ${err}`));
+
+        const data = {
+            userId: studentUserId || "",
+            interested: values.interested,
+            enrollment: values.enrollment,
+            fullName: values.fullName,
+            dob: values.dob,
+            gender: values.gender,
+            mobileNo: values.mobileNo,
+            altMobileNo: values.altMobileNo,
+            email: values.email,
+            category: values.category,
+            speciallyAbled: values.speciallyAbled,
+            localAddress: values.localAddress,
+            localPincode: values.localPincode,
+            permanentAddress: values.permanentAddress,
+            permanentPincode: values.permanentPincode,
+            hometown: values.hometown,
+            state: values.state,
+            passportPhoto: values.passportPhoto,
+            universityName: values.universityName,
+            course: values.course,
+            current_semester: values.current_semester,
+            ssc: {
+                percentage: values.SSCpercentage,
+                schoolName: values.SSCschoolName,
+                board: values.SSCboard,
+                yearOfPassing: values.SSCyearOfPassing,
+            },
+            hssc: {
+                percentage: values.HSSCpercentage,
+                schoolName: values.HSSCschoolName,
+                board: values.HSSCboard,
+                yearOfPassing: values.HSSCyearOfPassing,
+            },
+            diploma: {
+                course: values.DIPLOMAcourse,
+                percentage: values.DIPLOMApercentage,
+                admissionYear: values.DIPLOMAadmissionYear,
+                passOutYear: values.DIPLOMApassOutYear,
+                instituteName: values.DIPLOMAinstituteName,
+            },
+            undergraduate: {
+                universityName: values.UGuniversityName,
+                course: values.UGcourse,
+                specialization: values.UGspecialization,
+                aggregateCGPA: values.UGaggregateCGPA,
+                aggregatePercentage: values.UGaggregatePercentage,
+                yearOfAdmission: values.UGyearOfAdmission,
+                yearOfPassing: values.UGyearOfPassing,
+            },
+            postgraduate: {
+                universityName: values.PGuniversityName,
+                course: values.PGcourse,
+                yearOfAdmission: values.PGyearOfAdmission,
+                yearOfPassing: values.PGyearOfPassing,
+                aggregateCGPA: values.PGaggregateCGPA,
+                aggregatePercentage: values.PGaggregatePercentage,
+            },
+            semesterDetails: [
+                {
+                    semester: "I",
+                    sgpa: values.ISemSGPA,
+                    atkt: values.ISemATKT
+                },
+                {
+                    semester: "II",
+                    sgpa: values.IISemSGPA,
+                    atkt: values.IISemATKT
+                },
+                {
+                    semester: "III",
+                    sgpa: values.IIISemSGPA,
+                    atkt: values.IIISemATKT
+                },
+                {
+                    semester: "IV",
+                    sgpa: values.IVSemSGPA,
+                    atkt: values.IVSemATKT
+                },
+                {
+                    semester: "V",
+                    sgpa: values.VSemSGPA,
+                    atkt: values.VSemATKT
+                },
+                {
+                    semester: "VI",
+                    sgpa: values.VISemSGPA,
+                    atkt: values.VISemATKT
+                },
+                {
+                    semester: "VII",
+                    sgpa: values.VIISemSGPA,
+                    atkt: values.VIISemATKT
+                },
+                {
+                    semester: "VII",
+                    sgpa: values.VIISemSGPA,
+                    atkt: values.VIISemATKT
+                }
+            ],
+            gaps: {
+                hasGap: values.hasGap,
+                numberOfYears: values.numberOfGapYears,
+            },
+            backlogs: {
+                hasActiveBacklogs: values.hasActiveBacklogs,
+                totalActiveBacklogs: values.totalActiveBacklogs,
+                backlogHistory: values.backlogHistory,
+            },
+            father: {
+                name: values.fatherName,
+                contactNo: values.fatherContactNo,
+                occupation: values.fatherOccupation,
+            },
+            mother: {
+                name: values.motherName,
+                contactNo: values.motherContactNo,
+            },
+            internship: values.internship
+        }
+
+        createProfile(data);
     }
     return (
         <div className='py-8 px-32 bg-blue'>
@@ -350,7 +487,7 @@ export const ProfileForm = () => {
                                                 <input
                                                     type="radio"
                                                     value="Mentally Ill"
-                                                    checked={field.value === "Mentally Ill"}
+                                                    checked={field.value === "Others"}
                                                     onChange={() => field.onChange("Mentally Ill")}
                                                 />{" "}
                                                 Mentally Ill
@@ -580,7 +717,6 @@ export const ProfileForm = () => {
                                     <FormLabel>Upload Photo</FormLabel>
                                     <FormControl>
                                         <Input
-                                            required
                                             type="file"
                                             accept="image/*"
                                             onChange={(e) => {
@@ -816,32 +952,6 @@ export const ProfileForm = () => {
                         />
                         <FormField
                             control={form.control}
-                            name="UGyearOfAdmission"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>UG Aggregrate Percentage</FormLabel>
-                                    <FormControl>
-                                        <Input required type='text' placeholder="UG Aggregrate Percentage" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="UGyearOfPassing"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>UG Aggregrate Percentage</FormLabel>
-                                    <FormControl>
-                                        <Input required type='text' placeholder="UG Aggregrate Percentage" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
                             name="PGuniversityName"
                             render={({ field }) => (
                                 <FormItem>
@@ -881,19 +991,6 @@ export const ProfileForm = () => {
                         />
                         <FormField
                             control={form.control}
-                            name="PGyearOfPassing"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>PG Aggregrate Percentage</FormLabel>
-                                    <FormControl>
-                                        <Input required type='text' placeholder="PG Aggregrate Percentage" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
                             name="PGaggregateCGPA"
                             render={({ field }) => (
                                 <FormItem>
@@ -907,25 +1004,12 @@ export const ProfileForm = () => {
                         />
                         <FormField
                             control={form.control}
-                            name="PGaggregatePercentage"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>PG Aggregrate Percentage</FormLabel>
-                                    <FormControl>
-                                        <Input required type='text' placeholder="PG Aggregrate Percentage" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
                             name="DIPLOMAcourse"
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Diploma Course</FormLabel>
                                     <FormControl>
-                                        <Input required type='text' placeholder="Diploma Course" {...field} />
+                                        <Input type='text' placeholder="Diploma Course" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -938,7 +1022,7 @@ export const ProfileForm = () => {
                                 <FormItem>
                                     <FormLabel>Diploma Percentage</FormLabel>
                                     <FormControl>
-                                        <Input required type='text' placeholder="Diploma Percentage" {...field} />
+                                        <Input type='text' placeholder="Diploma Percentage" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -951,7 +1035,7 @@ export const ProfileForm = () => {
                                 <FormItem>
                                     <FormLabel>Diploma Admission Year</FormLabel>
                                     <FormControl>
-                                        <Input required type='text' placeholder="Diploma Admission Year" {...field} />
+                                        <Input type='text' placeholder="Diploma Admission Year" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -964,7 +1048,7 @@ export const ProfileForm = () => {
                                 <FormItem>
                                     <FormLabel>Diploma Pass Out Year</FormLabel>
                                     <FormControl>
-                                        <Input required type='text' placeholder="Diploma Pass Out Year" {...field} />
+                                        <Input type='text' placeholder="Diploma Pass Out Year" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -977,7 +1061,7 @@ export const ProfileForm = () => {
                                 <FormItem>
                                     <FormLabel>Diploma Institute Name</FormLabel>
                                     <FormControl>
-                                        <Input required type='text' placeholder="Diploma Pass Out Year" {...field} />
+                                        <Input type='text' placeholder="Diploma Pass Out Year" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -996,7 +1080,7 @@ export const ProfileForm = () => {
                                 <FormItem>
                                     <FormLabel>First Semester SGPA</FormLabel>
                                     <FormControl>
-                                        <Input type="text" placeholder="SGPA (e.g., 8.5)" {...field} />
+                                        <Input required type="text" placeholder="SGPA (e.g., 8.5)" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -1009,7 +1093,7 @@ export const ProfileForm = () => {
                                 <FormItem>
                                     <FormLabel>First Semester ATKT</FormLabel>
                                     <FormControl>
-                                        <Input type="text" placeholder="Number or ATKTs" {...field} />
+                                        <Input required type="text" placeholder="Number or ATKTs" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -1022,7 +1106,7 @@ export const ProfileForm = () => {
                                 <FormItem>
                                     <FormLabel>Second Semester SGPA</FormLabel>
                                     <FormControl>
-                                        <Input type="text" placeholder="SGPA (e.g., 8.5)" {...field} />
+                                        <Input required type="text" placeholder="SGPA (e.g., 8.5)" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -1035,7 +1119,7 @@ export const ProfileForm = () => {
                                 <FormItem>
                                     <FormLabel>Second Semester ATKT</FormLabel>
                                     <FormControl>
-                                        <Input type="text" placeholder="Number or ATKTs" {...field} />
+                                        <Input required type="text" placeholder="Number or ATKTs" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -1393,6 +1477,25 @@ export const ProfileForm = () => {
                                     <FormLabel>Mother&apos;s Contact Number</FormLabel>
                                     <FormControl>
                                         <Input required type='text' placeholder="Mother's Contact Number" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+
+                    {/* Experience ===================== */}
+
+                    <div className='p-7 bg-gray-200 rounded-xl grid grid-cols-1 gap-7'>
+                        <h2 className='col-span-2 border-b-2 border-gray-400 text-3xl font-semibold text-gray-400'>Work Experience</h2>
+                        <FormField
+                            control={form.control}
+                            name="internship"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Any Internship/Work Experience</FormLabel>
+                                    <FormControl>
+                                        <Input type='text' placeholder="Intenship / Work Experience" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 // import { Target } from "lucide-react";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -29,10 +29,10 @@ export const Navbar = () => {
 	}, []);
 
 	return (
-		<nav className="flex justify-between items-center p-x bg-bgc text-white w-full">
-			<div>
+		<nav className="flex justify-end items-center p-x py-2 bg-bgc text-white w-full gap-12">
+			{/* <div>
 				<Image src="/SOC-Logo.png" alt="" height={100} width={350} />
-			</div>
+			</div> */}
 			<div className="">
 				<ul className="flex gap-4">
 					<Link href="/">
@@ -84,8 +84,8 @@ export const Navbar = () => {
 						</div>
 					</Link>
 				) : (
-					<Link href="/login">
-						<Button className="bg-white text-black">Login</Button>
+					<Link href="/login" className="">
+						<div className="">Login</div>
 					</Link>
 				)}
 			</div>
