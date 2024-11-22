@@ -1,16 +1,16 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 // import { Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import InstagramIcon from '@mui/icons-material/Instagram';
-import HomeIcon from '@mui/icons-material/Home';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import Divider from '@mui/material/Divider';
+import InstagramIcon from "@mui/icons-material/Instagram";
+import HomeIcon from "@mui/icons-material/Home";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import Divider from "@mui/material/Divider";
 import { isLoggedIn } from "@/hooks/userExists";
-import getStudentData from '@/hooks/getStudentData';
+import getStudentData from "@/hooks/getStudentData";
 
 export const Navbar = () => {
 	const [isUserLoggedIn, setIsUserLoggedIn] = useState<string | undefined>();
@@ -23,20 +23,15 @@ export const Navbar = () => {
 		});
 		const data = getStudentData();
 		console.log(data);
-		data.then(data => {
+		data.then((data) => {
 			setUserData(data);
-		})
+		});
 	}, []);
 
 	return (
-		<nav className="flex justify-between items-center p-x bg-blue text-white w-full">
+		<nav className="flex justify-between items-center p-x bg-bgc text-white w-full">
 			<div>
-				<Image
-					src="/SOC-Logo.png"
-					alt=""
-					height={100}
-					width={350}
-				/>
+				<Image src="/SOC-Logo.png" alt="" height={100} width={350} />
 			</div>
 			<div className="">
 				<ul className="flex gap-4">
@@ -65,47 +60,34 @@ export const Navbar = () => {
 					</Link>
 					<Divider orientation="vertical" variant="fullWidth" flexItem className="bg-white" />
 					<Link href="tel:7470528480" target="_blank">
-						<li>
-							Contact Us
-						</li>
+						<li>Contact Us</li>
 					</Link>
 					<Divider orientation="vertical" variant="fullWidth" flexItem className="bg-white" />
 					<Link href="mail:princesinghchouhan7470@gmail.com" target="_blank">
-						<li>
-							Email
-						</li>
+						<li>Email</li>
 					</Link>
 					<Divider orientation="vertical" variant="fullWidth" flexItem className="bg-white" />
 				</ul>
 			</div>
 			<div>
-				{
-					isUserLoggedIn ?
-						<Link href="/profile">
-							<div className="flex gap-3 items-center justify-center">
-								<Image
-									src="/test.jpg"
-									alt="Profile Photo"
-									width={40}
-									height={40}
-									className="rounded-full aspect-square object-cover"
-								/>
-								<div
-									className="text-2xl font-semibold"
-								>
-									{
-										userData?.name
-											.toLowerCase()
-											.split(' ')
-											.map(word => word.charAt(0).toUpperCase() + word.slice(1))
-											.join(' ')
-									}
-								</div>
+				{isUserLoggedIn ? (
+					<Link href="/profile">
+						<div className="flex gap-3 items-center justify-center">
+							<Image src="/test.jpg" alt="Profile Photo" width={40} height={40} className="rounded-full aspect-square object-cover" />
+							<div className="text-2xl font-semibold">
+								{userData?.name
+									.toLowerCase()
+									.split(" ")
+									.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+									.join(" ")}
 							</div>
-						</Link>
-						: <Link href="/login">
-							<Button className="bg-white text-black">Login</Button>
-						</Link>}
+						</div>
+					</Link>
+				) : (
+					<Link href="/login">
+						<Button className="bg-white text-black">Login</Button>
+					</Link>
+				)}
 			</div>
 		</nav>
 	);

@@ -10,7 +10,8 @@ const config: Config = {
 			colors: {
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
-				heading: "#01123d",
+				headingC: "#01123d",
+				bgc: "#01123d",
 				card: {
 					DEFAULT: "hsl(var(--card))",
 					foreground: "hsl(var(--card-foreground))",

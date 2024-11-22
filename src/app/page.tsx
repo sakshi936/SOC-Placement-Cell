@@ -10,7 +10,7 @@ import { SideBar } from "@/components/SideBar";
 
 export default function Home() {
 	return (
-		<main className=" flex flex-col gap-y-48">
+		<main className=" flex flex-col gap-y-10">
 			<SideBar />
 			<div className="h-screen">
 				<Navbar />
@@ -18,7 +18,7 @@ export default function Home() {
 					<About />
 				</div>
 			</div>
-			<div id="records" className=" ">
+			<div id="records" className="mt-20">
 				<Records />
 			</div>
 			<div id="recruiters" className=" ">

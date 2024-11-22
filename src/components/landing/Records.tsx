@@ -6,7 +6,7 @@ export const Records = () => {
 	return (
 		<section className="">
 			<div className=" text-center">
-				<h2 className="text-heading">Our Top Placed Students</h2>
+				<h2 className="text-heading text-headingC">Our Top Placed Students</h2>
 				<FocusCards cards={placedStudentcards} />
 			</div>
 		</section>

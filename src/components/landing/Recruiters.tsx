@@ -1,20 +1,24 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { recruiters } from "@/data/data";
 
 export const Recruiters = () => {
 	return (
-		<section className="p-y p-x flex justify-center items-center">
-			<div className="w-full flex flex-col gap-24">
-				<h2 className="text-heading text-center">Our Top Recruiters</h2>
+		<section className="flex justify-center items-center h-screen bg-bgc py-12">
+			<div className="w-full flex flex-col gap-y-32">
+				<h2 className="text-heading text-white text-center">Our Top Recruiters</h2>
 
-				<div className="flex flex-wrap gap-12 justify-center">
-					{images.map((element) => (
-						<>
-							<Image src={element} alt="" height={100} width={100} className="aspect-square object-cover rounded-full" />
-						</>
-					))}
+				<div className=" w-full ">
+					<div className=" grid grid-cols-5 gap-6">
+						{recruiters.map((element) => (
+							<>
+								<div className=" flex justify-center  items-center">
+									<Image src={element} alt="" height={100} width={100} className="" />
+								</div>
+							</>
+						))}
+					</div>
 				</div>
 
 				{/* <Link href="/recruiters" className="flex justify-center">
@@ -24,5 +28,3 @@ export const Recruiters = () => {
 		</section>
 	);
 };
-
-const images = ["/test.jpg", "/test.jpg", "/test.jpg", "/test.jpg", "/test.jpg", "/test.jpg", "/test.jpg", "/test.jpg", "/test.jpg", "/test.jpg", "/test.jpg", "/test.jpg"];

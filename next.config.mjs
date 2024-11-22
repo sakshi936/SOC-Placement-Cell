@@ -2,7 +2,7 @@
 const nextConfig = {
 
   images: {
-    domains: ['images.pexels.com'],
+    domains: ['images.pexels.com','www.seros.in','aeromindandbody.com','www.accenture.com','www.federalbank.co.in','upload.wikimedia.org'],
     remotePatterns: [
       {
         protocol: 'https',

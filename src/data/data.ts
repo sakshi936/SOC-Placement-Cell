@@ -59,7 +59,7 @@ export const galleryImags = [
 export const aboutContent = {
 	heading: "About the Central Placement Cell",
 	h2: "ALL TIME LEADER OF CAMPUS PLACEMENT",
-	p1: `The Central Placement Cell of IPS Academy is recognized nationally as a leader in campus placements, has &quot; State of the Art &quot; infrastructure highly rated by corporates&comma; and is most advanced in central India. Central Placement Cell provides a launchpad for students to make it to the best organizations in their respective fields.Every Year 500 Plus recruiters visit us for closed campus hiring from Government&comma; Semi Government & Private sectors like Engineering&comma; Pharmacy&comma; Petrochemical&comma; IT&comma; ITES&comma; Banking&comma; FMCG&comma; Edutech&comma; Manufacturing&comma; Financial Services&comma; Hospitality&comma; Consulting&comma; Logistics&comma; Telecommunication&comma; Infrastructure&comma; Retail&comma; Oil & Gas and many more.Central Placement Cell expertise in placement for students of Civil&comma; Mechanical&comma; Architecture&comma; Electrical&comma; Electronics&comma; Chemical&comma; Pharmacy&comma; Law&comma; Commerce&comma; Science&comma; Fashion&comma; Design&comma; Hospitality&comma; Masscom&comma; Travel & Tourism along with CS/IT & Management. `,
+	p1: `The Central Placement Cell of IPS Academy is recognized nationally as a leader in campus placements, has "State of the Art '' infrastructure highly rated by corporates, and is most advanced in central India. Central Placement Cell provides a launchpad for students to make it to the best organizations in their respective fields.Every Year 500 Plus recruiters visit us for closed campus hiring from Government, Semi Government & Private sectors like Engineering, Pharmacy, Petrochemical, IT, ITES, Banking, FMCG, Edutech, Manufacturing, Financial Services, Hospitality, Consulting, Logistics, Telecommunication, Infrastructure, Retail, Oil & Gas and many more.Central Placement Cell expertise in placement for students of Civil, Mechanical, Architecture, Electrical, Electronics, Chemical, Pharmacy, Law, Commerce, Science, Fashion, Design, Hospitality, Masscom, Travel & Tourism along with CS/IT & Management.`,
 
 	p2: "Central Placement Cell facilitates an enriching learning experience&comma; helping students in placements and their personal lives through advanced learning platforms with real business world exposure.Our training Curriculum is industry-ready with multiple collaborations and associations. It is a mix of academic&comma; research&comma; and industry experience. Also&comma; 360 exposure given Corporate Mentoring&comma; Industrial Visit&comma; Expert Talk&comma; Soft Skills&comma; Internship and Industrial Training opportunities & various industry linked Certifications",
 };
@@ -229,5 +229,18 @@ export const placedStudentcards = [
 		package: "abc",
 		course: "abc",
 		batch: "2024",
-	}
+	},
+];
+
+export const recruiters = [
+	"https://www.seros.in/img/logo-white.png",
+	"https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg",
+	"https://hexaware.com/wp-content/themes/hexaware/assets/images/logo.svg",
+	"https://aeromindandbody.com/img/amblogolighter.png",
+	"https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
+	"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Accenture.svg/330px-Accenture.svg.png",
+	"https://www.federalbank.co.in/o/federal-bank-theme/images/logo.png",
+	"https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg",
+	"https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg",
+	"https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg",
 ];
