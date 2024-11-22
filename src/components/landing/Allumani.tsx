@@ -8,14 +8,14 @@ import { allumniesDetails } from "@/data/data";
 
 export function Allumani() {
 	return (
-		<div className="h-screen rounded-md flex flex-col gap-y-8 antialiased  items-center justify-center relative overflow-hidden">
-			<h2 className="text-heading ">Allumani</h2>
-			<div className="py-10">
+		<div className="rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden ">
+			<h2 className="text-heading text-headingC ">Allumani</h2>
+			<div className="py-10 bg-slate-50">
 				<InfiniteMovingCards items={allumniesDetails} direction="left" speed="slow" />
 			</div>
-			<Link href="/allumni" className="flex justify-center items-center">
-				<Button>See More...</Button>
-			</Link>
+			{/* <Link href="/allmni" className="flex justify-center">
+				<Button className="rounded-full p-5 bg-blue-900">See More...</Button>
+			</Link> */}
 		</div>
 	);
 }

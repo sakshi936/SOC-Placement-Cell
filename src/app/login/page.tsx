@@ -37,6 +37,7 @@ export default function Login() {
 				console.log("changing route /profile");
 
 				document.cookie = `student_id=${respoense.student._id}; path=/;`;
+				document.cookie = `login=true; path=/;`;
 
 				sessionStorage.setItem("login", "true");
 				router.push("/profile");
