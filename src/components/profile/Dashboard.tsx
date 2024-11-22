@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { SideBar } from "@/components/SideBar";
 import getStudentData from "@/hooks/getStudentData";
 import Image from "next/image";
+import { Navbar } from "@/components/Navbar";
 
 // type SemesterDetails = {
 //     semester: number;
@@ -100,6 +101,7 @@ export const Dashboard = () => {
 
 	return (
 		<div>
+			<Navbar />
 			<SideBar />
 			<div className="container mx-auto p-4">
 				<div className="flex justify-center items-center mb-8">
