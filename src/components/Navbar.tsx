@@ -75,11 +75,12 @@ export const Navbar = () => {
 						<div className="flex gap-3 items-center justify-center">
 							<Image src="/test.jpg" alt="Profile Photo" width={40} height={40} className="rounded-full aspect-square object-cover" />
 							<div className="text-2xl font-semibold">
-								{userData?.name
-									.toLowerCase()
-									.split(" ")
-									.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-									.join(" ")}
+								{userData?.fullName
+									// .toLowerCase()
+									// .split(" ")
+									// .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+									// .join(" ")
+								}
 							</div>
 						</div>
 					</Link>
@@ -149,8 +150,8 @@ interface UserData {
 	};
 	_id: string;
 	userId: string;
-	name: string;
-	enrollmentNumber: string;
+	fullName: string;
+	enrollment: string;
 	dob: string;
 	gender: string;
 	category: string;

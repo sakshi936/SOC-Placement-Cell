@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import { recruiters } from "@/data/data";
 
 export const Recruiters = () => {
@@ -14,7 +14,7 @@ export const Recruiters = () => {
 						{recruiters.map((element) => (
 							<>
 								<div className=" flex justify-center  items-center">
-									<Image src={element} alt="" height={100} width={100} className="" />
+									<Image src={element} alt="" height={200} width={200} className="" />
 								</div>
 							</>
 						))}
