@@ -76,11 +76,12 @@ export const SideBar = () => {
 					<ListItemButton href="/profile" sx={{ border: "", display: "flex", justifyContent: "center", gap: "1rem" }}>
 						<Image src="/test.jpg" alt="Profile Photo" width={40} height={40} className="rounded-full aspect-square object-cover" />
 						<div className="text-2xl font-semibold">
-							{userData?.name
-								.toLowerCase()
-								.split(" ")
-								.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-								.join(" ")}
+							{userData?.fullName
+								// .toLowerCase()
+								// .split(" ")
+								// .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+								// .join(" ")
+							}
 						</div>
 					</ListItemButton>
 				) : (
@@ -94,11 +95,11 @@ export const SideBar = () => {
 	);
 
 	return (
-		<div className="fixed z-50 top-4 left-4">
-			<button onClick={toggleDrawer(true)} className="p-2 bg-blue rounded-xl">
+		<div className="fixed z-50 top-5 left-4">
+			<button onClick={toggleDrawer(true)} className="p-1 bg-blue rounded-lg">
 				<PanelRightClose color="white" />
 			</button>
-			<Drawer open={open} onClose={toggleDrawer(false)}>
+			<Drawer open={open} onClose={toggleDrawer(false)} className="">
 				{DrawerList}
 			</Drawer>
 		</div>
@@ -161,8 +162,8 @@ interface UserData {
 	};
 	_id: string;
 	userId: string;
-	name: string;
-	enrollmentNumber: string;
+	fullName: string;
+	enrollment: string;
 	dob: string;
 	gender: string;
 	category: string;

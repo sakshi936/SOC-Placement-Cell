@@ -108,12 +108,12 @@ export const Dashboard = () => {
 					{userData?.passportPhoto ? (
 						<Image src="/test.jpg" alt="Profile Photo" width={150} height={150} className="rounded-full aspect-square object-cover" />
 					) : (
-						<div className="w-36 h-36 bg-gray-300 rounded-full"></div>
+						<Image src="/test.jpg" alt="Profile Photo" width={150} height={150} className="rounded-full aspect-square object-cover" />
 					)}
 				</div>
 				<div className="text-center">
-					<h1 className="text-3xl font-bold mb-2">{userData?.name || "Name not available"}</h1>
-					<p className="text-xl text-gray-600">{userData?.enrollmentNumber || "Enrollment number not available"}</p>
+					<h1 className="text-3xl font-bold mb-2">{userData?.fullName || "Name not available"}</h1>
+					<p className="text-xl text-gray-600">{userData?.enrollment || "Enrollment number not available"}</p>
 					<p className="text-md text-gray-400">{userData?.email || "Email not available"}</p>
 				</div>
 
@@ -282,8 +282,8 @@ interface UserData {
 	};
 	_id: string;
 	userId: string;
-	name: string;
-	enrollmentNumber: string;
+	fullName: string;
+	enrollment: string;
 	dob: string;
 	gender: string;
 	category: string;
