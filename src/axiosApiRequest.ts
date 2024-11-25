@@ -15,7 +15,9 @@ export const reqLogin = async ({ email, password }: loginData) => {
 // create student profile
 export const createProfile = async (details: StudentDetails) => {
 	try {
-		const response = await axios.post("http://localhost:8000/api/student", details);
+		console.log(details);
+		const response = await axios.post("http://localhost:8000/api/student/", details);
+		console.log("hit");
 		return response.data.message;
 	} catch (error) {
 		return `Failed to request students profile creation with : ${(error as Error).message}`;
