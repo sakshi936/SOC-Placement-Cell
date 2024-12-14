@@ -9,7 +9,7 @@ import { allumniesDetails } from "@/data/data";
 export function Allumani() {
 	return (
 		<div className="rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden ">
-			<h2 className="text-heading text-headingC ">Allumani</h2>
+			<h2 className="text-heading text-headingC ">Alumani</h2>
 			<div className="py-10 bg-slate-50">
 				<InfiniteMovingCards items={allumniesDetails} direction="left" speed="slow" />
 			</div>
